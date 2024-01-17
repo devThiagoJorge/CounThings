@@ -10,14 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
-
 var connectionString = builder.Configuration["dbContextSettings:ConnectionString"];
+builder.Services.AddDbContext<ActivityContext>(options => options.UseNpgsql(connectionString));
 
-builder.Services.AddDbContext<ActivityContext>(options =>
-options.UseNpgsql(connectionString)
-);
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

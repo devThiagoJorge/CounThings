@@ -1,4 +1,5 @@
 ﻿using CounThings.Domain.Models;
+using CounThings.Infra.Context.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,16 @@ namespace CounThings.Infra.Context
 {
     public class ActivityContext : DbContext
     {
+        public ActivityContext(DbContextOptions<ActivityContext> options): base(options)
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ActivityConfiguration());
+        }
+
         public DbSet<Activity> Activities { get; set; }
     }
 }
