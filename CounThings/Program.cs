@@ -1,4 +1,8 @@
+using CounThings.Domain.Commands.Handlers;
+using CounThings.Domain.Commands.Handlers.Interfaces;
 using CounThings.Infra.Context;
+using CounThings.Infra.Repositories;
+using CounThings.Infra.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +16,8 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration["dbContextSettings:ConnectionString"];
 builder.Services.AddDbContext<ActivityContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
+builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
 
 var app = builder.Build();
 

@@ -1,3 +1,5 @@
+using CounThings.Domain.Commands.Handlers.Interfaces;
+using CounThings.Domain.Commands.Requests;
 using CounThings.Domain.Models;
 using CounThings.Infra.Context;
 using Microsoft.AspNetCore.Mvc;
@@ -8,28 +10,18 @@ namespace CounThings.Controllers
     [Route("[controller]")]
     public class ActivityController : ControllerBase
     {
-        private readonly ActivityContext _context;
+        private readonly ICreateActivityHandler _handler; 
 
-        public ActivityController(ActivityContext context)
+        public ActivityController(ICreateActivityHandler handler)
         {
-            _context= context;
+            _handler= handler;
         }
  
-        [HttpGet(Name = "Teste")]
-        public IActionResult Get()
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateActivityRequest command)
         {
-            _context.Activities.Add(new Activity
-            {
-                Amount= 10,
-                CreatedAt= DateTime.Now,
-                ItsCalculable = true,
-                Name = "Testando",
-                Quantity = 20
-            });
-
-            _context.SaveChanges();
-
-            return Ok(_context.Activities.ToList());
+            var response = _handler.Handle(command);
+            return Ok(response);
         }
     }
 }
