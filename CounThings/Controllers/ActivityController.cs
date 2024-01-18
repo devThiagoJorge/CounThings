@@ -1,5 +1,5 @@
-using CounThings.Domain.Commands.Handlers.Interfaces;
-using CounThings.Domain.Commands.Requests;
+using CounThings.Application.Commands.Handlers.Interfaces;
+using CounThings.Application.Commands.Requests;
 using CounThings.Domain.Models;
 using CounThings.Infra.Context;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +18,9 @@ namespace CounThings.Controllers
         }
  
         [HttpPost]
-        public IActionResult Create([FromBody] CreateActivityRequest command)
+        public async Task<IActionResult> Create([FromBody] CreateActivityRequest command)
         {
-            var response = _handler.Handle(command);
+            var response = await _handler.Handle(command);
             return Ok(response);
         }
     }

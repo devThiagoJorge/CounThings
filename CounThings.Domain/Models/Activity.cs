@@ -15,17 +15,13 @@ namespace CounThings.Domain.Models
         public DateTime CreatedAt { get; private set; }
         public bool ItsCalculable { get; private set; }
 
-        public Activity(string name, int quantity, double amount, bool itsCalculable)
+        public Activity(string name, bool itsCalculable)
         {
+            int firstCreation = 1;
+
             Name = name;
-            Quantity = quantity;
+            Quantity = firstCreation;
             ItsCalculable= itsCalculable;
-
-            if(ItsCalculable)
-            {
-                Amount = amount;
-            }
-
             CreatedAt = DateTime.Now;
         }
 
