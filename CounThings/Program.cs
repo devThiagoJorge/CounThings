@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -19,6 +19,7 @@ builder.Services.AddDbContext<ActivityContext>(options => options.UseNpgsql(conn
 builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
 builder.Services.AddScoped<IUpdateQuantityInActivityHandler, UpdateQuantityInActivityHandler>();
+builder.Services.AddScoped<IActivityQueryHandler, ActivityQueryHandler>();
 
 var app = builder.Build();
 

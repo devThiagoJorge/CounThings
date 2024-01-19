@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CounThings.Domain.Models;
 
 namespace CounThings.Application.Commands.Responses
 {
-    public class CreateActivityResponse
+    public class ActivityQueryResponse
     {
         public int Id { get; set; }
         public string Name { get; set; } = "";
