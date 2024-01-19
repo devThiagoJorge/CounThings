@@ -25,7 +25,7 @@ namespace CounThings.Application.Commands.Handlers
             {
                 Id = activityCreated.Id,
                 ItsCalculable = activityCreated.ItsCalculable,
-                Amount = activityCreated.Amount.GetValueOrDefault(),
+                Amount = activityCreated.Total,
                 CreatedAt = activityCreated.CreatedAt,
                 Name = activityCreated.Name,
                 Quantity = activityCreated.Quantity

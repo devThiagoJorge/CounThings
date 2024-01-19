@@ -19,8 +19,10 @@ namespace CounThings.Infra.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ActivityConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentConfiguration());
         }
 
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }

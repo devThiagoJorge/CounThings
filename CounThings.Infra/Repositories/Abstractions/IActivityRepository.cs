@@ -15,7 +15,7 @@ namespace CounThings.Infra.Repositories.Abstractions
 
         Task<Activity> AddActivity(Activity toCreate);
 
-        Task<Activity> UpdateQuantity(int id);
+        Task<Activity> UpdateActivity(Activity activityUpdate);
 
         Task DeletePerson(int activityId);
     }

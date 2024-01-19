@@ -34,7 +34,9 @@ namespace CounThings.Infra.Repositories
 
         public async Task<Activity> GetActivityById(int activityId)
         {
-            return await _context.Activities.AsNoTracking().FirstOrDefaultAsync(p => p.Id == activityId);
+            return await _context.Activities
+                .Include(x => x.Payments)
+                .FirstOrDefaultAsync(p => p.Id == activityId);
         }
 
         public async Task<ICollection<Activity>> GetAll()
@@ -42,15 +44,12 @@ namespace CounThings.Infra.Repositories
             return await _context.Activities.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Activity> UpdateQuantity(int id)
+        public async Task<Activity> UpdateActivity(Activity activityUpdate)
         {
-            var activity = await GetActivityById(id);
-            
-            activity.UpdateQuantity();
-
+            _context.Update(activityUpdate);
             await _context.SaveChangesAsync();
 
-            return activity;
+            return activityUpdate;
         }
     }
 }

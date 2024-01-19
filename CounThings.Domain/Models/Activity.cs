@@ -11,9 +11,11 @@ namespace CounThings.Domain.Models
         public int Id { get; private set; }
         public string Name { get; private set; } = "";
         public int Quantity { get; private set; }
-        public double? Amount { get; private set; }
+        public double Total { get; private set; } = 0;
         public DateTime CreatedAt { get; private set; }
         public bool ItsCalculable { get; private set; }
+        public ICollection<Payment>? Payments { get; }
+
 
         public Activity(string name, bool itsCalculable)
         {
@@ -25,9 +27,12 @@ namespace CounThings.Domain.Models
             CreatedAt = DateTime.Now;
         }
 
-        public void UpdateQuantity()
+        public void UpdateQuantityActivity(bool addNew)
         {
-            Quantity = Quantity  + 1;
+            if (addNew)
+                Quantity++;
+            else
+                Quantity--;
         }
     }
 }

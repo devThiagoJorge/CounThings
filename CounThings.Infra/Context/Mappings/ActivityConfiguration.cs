@@ -29,8 +29,8 @@ namespace CounThings.Infra.Context.Mappings
             .HasColumnName("quantity")
             .IsRequired();
 
-            builder.Property(x => x.Amount)
-            .HasColumnName("amount");
+            builder.Property(x => x.Total)
+            .HasColumnName("total");
 
             builder.Property(x => x.CreatedAt)
             .HasColumnName("created_at")
@@ -38,6 +38,11 @@ namespace CounThings.Infra.Context.Mappings
 
             builder.Property(x => x.ItsCalculable)
             .HasColumnName("its_calculable")
+            .IsRequired();
+
+            builder.HasMany(x => x.Payments)
+            .WithOne(f => f.Activity)
+            .HasForeignKey(f => f.ActivityId)
             .IsRequired();
         }
     }

@@ -18,6 +18,7 @@ var connectionString = builder.Configuration["dbContextSettings:ConnectionString
 builder.Services.AddDbContext<ActivityContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+builder.Services.AddScoped<IUpdateQuantityInActivityHandler, UpdateQuantityInActivityHandler>();
 
 var app = builder.Build();
 
