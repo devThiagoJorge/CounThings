@@ -23,7 +23,7 @@ namespace CounThings.Domain.Models
 
             Name = name;
             Quantity = firstCreation;
-            ItsCalculable= itsCalculable;
+            ItsCalculable = itsCalculable;
             CreatedAt = DateTime.Now;
         }
 
@@ -33,6 +33,14 @@ namespace CounThings.Domain.Models
                 Quantity++;
             else
                 Quantity--;
+        }
+
+        public void UpdateTotal(double amountPaid, bool isNew)
+        {
+            if (isNew)
+                Total += amountPaid;
+            else
+                Total -= amountPaid;
         }
     }
 }

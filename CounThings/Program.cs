@@ -24,6 +24,7 @@ builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
 builder.Services.AddScoped<IUpdateQuantityInActivityHandler, UpdateQuantityInActivityHandler>();
 builder.Services.AddScoped<IActivityQueryHandler, ActivityQueryHandler>();
 builder.Services.AddScoped<ICreatePaymentHandler, CreatePaymentHandler>();
+builder.Services.AddScoped<IDeletePaymentHandler, DeletePaymentHandler>();
 
 var app = builder.Build();
 

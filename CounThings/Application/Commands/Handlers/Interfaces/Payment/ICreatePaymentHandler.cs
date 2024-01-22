@@ -7,6 +7,6 @@ namespace CounThings.Application.Commands.Handlers.Interfaces.Payment
 {
     public interface ICreatePaymentHandler
     {
-        public Task<CreatePaymentResponse> Handle(CreatePaymentRequest command);
+        public Task<ApiResponse> Handle(CreatePaymentRequest command);
     }
 }
