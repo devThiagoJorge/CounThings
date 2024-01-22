@@ -1,4 +1,4 @@
-﻿using CounThings.Domain.Models;
+﻿using CounThings.Application.Commands.Responses.Payment;
 
 namespace CounThings.Application.Commands.Responses
 {
@@ -10,5 +10,6 @@ namespace CounThings.Application.Commands.Responses
         public double? Total { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool ItsCalculable { get; set; }
+        public ICollection<ListPaymentResponse>? Payments { get; set; }
     }
 }

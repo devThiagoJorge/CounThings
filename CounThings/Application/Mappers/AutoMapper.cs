@@ -13,6 +13,9 @@ namespace CounThings.Application.Mappers
 
             CreateMap<Payment, CreatePaymentResponse>()
                .ReverseMap();
+
+            CreateMap<Payment, ListPaymentResponse>()
+                .ReverseMap();
         }
     }
 }
