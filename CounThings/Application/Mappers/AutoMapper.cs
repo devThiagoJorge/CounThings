@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CounThings.Application.Commands.Responses;
+using CounThings.Application.Commands.Responses.Payment;
 using CounThings.Domain.Models;
 
 namespace CounThings.Application.Mappers
@@ -9,6 +10,9 @@ namespace CounThings.Application.Mappers
         public AutoMapper() {
             CreateMap<Activity, ActivityQueryResponse>()
                 .ReverseMap();
+
+            CreateMap<Payment, CreatePaymentResponse>()
+               .ReverseMap();
         }
     }
 }

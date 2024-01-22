@@ -1,5 +1,7 @@
 using CounThings.Application.Commands.Handlers;
 using CounThings.Application.Commands.Handlers.Interfaces;
+using CounThings.Application.Commands.Handlers.Interfaces.Payment;
+using CounThings.Application.Commands.Handlers.PaymentHandler;
 using CounThings.Infra.Context;
 using CounThings.Infra.Repositories;
 using CounThings.Infra.Repositories.Abstractions;
@@ -16,10 +18,12 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration["dbContextSettings:ConnectionString"];
 builder.Services.AddDbContext<ActivityContext>(options => options.UseNpgsql(connectionString));
-builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<ICreateActivityHandler, CreateActivityHandler>();
 builder.Services.AddScoped<IUpdateQuantityInActivityHandler, UpdateQuantityInActivityHandler>();
 builder.Services.AddScoped<IActivityQueryHandler, ActivityQueryHandler>();
+builder.Services.AddScoped<ICreatePaymentHandler, CreatePaymentHandler>();
 
 var app = builder.Build();
 

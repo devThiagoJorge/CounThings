@@ -21,7 +21,7 @@ namespace CounThings.Infra.Repositories
             return toCreate;
         }
 
-        public async Task DeletePerson(int activityId)
+        public async Task Delete(int activityId)
         {
             var activity = await GetActivityById(activityId);
 

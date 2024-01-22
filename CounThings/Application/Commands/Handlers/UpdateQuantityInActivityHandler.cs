@@ -16,7 +16,7 @@ namespace CounThings.Application.Commands.Handlers
         {
             var activity = await _activityRepository.GetActivityById(command.ActivityId);
 
-            if(activity.Quantity == 0 && !command.AddNew)
+            if (activity.Quantity == 0 && !command.AddNew)
                 return new ApiResponse(true, $"A atividade {activity.Name} já está com 0 frequência!");
 
             activity.UpdateQuantityActivity(command.AddNew);

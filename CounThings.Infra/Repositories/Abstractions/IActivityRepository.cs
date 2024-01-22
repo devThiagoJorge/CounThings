@@ -17,6 +17,6 @@ namespace CounThings.Infra.Repositories.Abstractions
 
         Task<Activity> UpdateActivity(Activity activityUpdate);
 
-        Task DeletePerson(int activityId);
+        Task Delete(int activityId);
     }
 }

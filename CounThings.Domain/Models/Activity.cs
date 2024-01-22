@@ -19,7 +19,7 @@ namespace CounThings.Domain.Models
 
         public Activity(string name, bool itsCalculable)
         {
-            int firstCreation = 1;
+            int firstCreation = 0;
 
             Name = name;
             Quantity = firstCreation;
